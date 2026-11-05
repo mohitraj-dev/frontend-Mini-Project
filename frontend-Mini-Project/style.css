@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #667eea, #764ba2, #2b5876);
+    padding: 20px;
+}
+
+/* Main Heading */
+h1 {
+    color: white;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Field */
+input {
+    width: 320px;
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    border-color: white;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Add Button */
+#add {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#add:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+}
+
+/* Todo List Glass Container */
+ul {
+    list-style: none;
+    width: 420px;
+    margin-top: 30px;
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual Task */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 16px;
+    margin-bottom: 12px;
+
+    color: white;
+    font-size: 16px;
+
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+
+    transition: 0.3s ease;
+}
+
+li:last-child {
+    margin-bottom: 0;
+}
+
+li:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
+}
+
+/* Delete Button */
+.delete {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.delete:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(255, 65, 108, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    ul {
+        width: 100%;
+    }
+}
