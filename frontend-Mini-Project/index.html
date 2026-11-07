@@ -4,65 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#760909">
 
-    <title>My Tasks | Todo App</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>TaskPilot — Your Tasks</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="app.js" defer></script>
 </head>
 
 <body>
 
-    <main class="app-container">
+    <main class="app-shell">
 
         <!-- HEADER -->
-        <header class="header">
+        <header class="topbar">
 
-            <div class="profile">
+            <a class="brand" href="#">
+                <span class="brand-mark">✓</span>
+                <span>taskpilot</span>
+            </a>
+
+            <div class="profile-area">
+
+                <div class="profile-copy">
+                    <span class="eyebrow">YOUR PERSONAL SPACE</span>
+                    <strong>Welcome back</strong>
+                </div>
+
                 <div class="avatar">M</div>
 
-                <div>
-                    <p class="greeting">GOOD MORNING 👋</p>
-                    <h3>Welcome back!</h3>
-                </div>
             </div>
-
-            <button class="notification-btn" aria-label="Notifications">
-                ♡
-            </button>
 
         </header>
 
 
-        <!-- TITLE -->
-        <section class="title-section">
+        <!-- HERO SECTION -->
+        <section class="hero">
 
             <div>
-                <p class="section-label">YOUR PERSONAL SPACE</p>
-                <h1>Your Tasks<span>!</span></h1>
-                <p class="subtitle">Make today count. One task at a time.</p>
+
+                <p class="eyebrow">MAKE TODAY COUNT</p>
+
+                <h1>Your Tasks<span>.</span></h1>
+
+                <p class="hero-subtitle">
+                    A little progress each day adds up to big results.
+                </p>
+
+                <p class="date-line" id="current-date"></p>
+
+            </div>
+
+            <div class="hero-badge">
+
+                <span class="badge-spark">✦</span>
+
+                <span>One thing<br>at a time.</span>
+
             </div>
 
         </section>
 
 
-        <!-- FILTER BUTTONS -->
+        <!-- FILTERS -->
         <nav class="filters">
 
-            <button class="filter active" data-filter="all">
+            <button class="filter-button is-active" data-filter="all">
                 All <span id="total-count">0</span>
             </button>
 
-            <button class="filter" data-filter="active">
+            <button class="filter-button" data-filter="active">
                 To-do
             </button>
 
-            <button class="filter" data-filter="completed">
+            <button class="filter-button" data-filter="completed">
                 Completed
             </button>
 
@@ -72,107 +94,253 @@
         <!-- DASHBOARD -->
         <section class="dashboard">
 
-            <!-- LEFT COLUMN -->
-            <div class="main-card">
 
-                <div class="card-header">
+            <!-- MAIN TASK SECTION -->
+            <section class="glass-card focus-card">
+
+                <div class="section-heading">
+
                     <div>
-                        <p class="section-label">YOUR WORKSPACE</p>
-                        <h2>Today's Focus</h2>
+                        <p class="eyebrow">YOUR WORKSPACE</p>
+                        <h2>Today's focus</h2>
                     </div>
 
-                    <span class="live-dot"></span>
+                    <span class="live-indicator">
+                        <i></i> LIVE
+                    </span>
+
                 </div>
 
 
                 <!-- PROGRESS -->
-                <div class="progress-section">
+                <div class="progress-block">
 
-                    <div class="progress-info">
-                        <span>Daily Progress</span>
-                        <span id="progress-text">0%</span>
+                    <div class="progress-label">
+
+                        <span>Daily progress</span>
+
+                        <strong id="progress-text">0%</strong>
+
                     </div>
 
-                    <div class="progress-bar">
+                    <div class="progress-track"
+                        role="progressbar"
+                        aria-label="Task completion progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                        id="progress-track">
+
                         <div class="progress-fill" id="progress-fill"></div>
+
                     </div>
+
+                    <p class="progress-caption" id="progress-caption">
+                        Start with one small task.
+                    </p>
 
                 </div>
+
+
+                <!-- SEARCH -->
+                <label class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search your tasks..."
+                        autocomplete="off"
+                    >
+
+                    <kbd>⌘ K</kbd>
+
+                </label>
 
 
                 <!-- TASK LIST -->
-                <div class="task-list" id="task-list">
+                <div class="task-list" id="task-list"></div>
 
-                    <!-- JavaScript adds tasks here -->
+
+                <!-- EMPTY STATE -->
+                <div class="empty-state" id="empty-state">
+
+                    <span class="empty-icon">✦</span>
+
+                    <strong id="empty-title">
+                        Nothing on your list yet
+                    </strong>
+
+                    <p id="empty-copy">
+                        Add a task and make your day count.
+                    </p>
 
                 </div>
 
 
-                <!-- EMPTY MESSAGE -->
-                <p class="empty-message" id="empty-message">
-                    No tasks here. Enjoy your free time! ✨
-                </p>
+                <!-- LIST FOOTER -->
+                <div class="list-footer">
 
-            </div>
+                    <span id="list-summary">0 tasks</span>
+
+                    <button class="text-button" id="clear-completed" type="button">
+                        Clear completed
+                    </button>
+
+                </div>
+
+            </section>
 
 
             <!-- RIGHT COLUMN -->
             <aside class="side-column">
 
-                <!-- ADD TASK CARD -->
-                <div class="add-card">
 
-                    <div class="add-icon">+</div>
+                <!-- CREATE TASK -->
+                <section class="glass-card create-card">
 
-                    <h2>Create a Task</h2>
+                    <div class="create-icon">＋</div>
 
-                    <p>Small steps lead to big achievements.</p>
+                    <p class="eyebrow">GET IT OUT OF YOUR HEAD</p>
+
+                    <h2>Create a task</h2>
+
+                    <p class="card-description">
+                        Capture what needs to get done.
+                        You can organize it later.
+                    </p>
+
 
                     <form id="task-form">
 
+                        <label class="field-label" for="task-input">
+                            Task name
+                        </label>
+
                         <input
+                            class="text-input"
                             type="text"
                             id="task-input"
-                            placeholder="What needs to be done?"
-                            autocomplete="off"
+                            maxlength="120"
+                            placeholder="e.g. Practice Java for 1 hour"
                             required
                         >
 
-                        <button type="submit" id="add-btn">
-                            Add Task <span>→</span>
+
+                        <div class="form-row">
+
+                            <div class="field-group">
+
+                                <label class="field-label" for="due-date">
+                                    Due date
+                                </label>
+
+                                <input
+                                    class="text-input date-input"
+                                    type="date"
+                                    id="due-date"
+                                >
+
+                            </div>
+
+
+                            <div class="field-group">
+
+                                <label class="field-label" for="priority">
+                                    Priority
+                                </label>
+
+                                <select class="text-input" id="priority">
+
+                                    <option value="low">Low</option>
+
+                                    <option value="medium" selected>
+                                        Medium
+                                    </option>
+
+                                    <option value="high">High</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <button class="primary-button" type="submit">
+
+                            Add task <span>↗</span>
+
                         </button>
+
+                        <p class="form-hint">
+                            Press Enter to quickly add a task.
+                        </p>
 
                     </form>
 
-                </div>
+                </section>
 
 
-                <!-- SUMMARY CARD -->
-                <div class="summary-card">
+                <!-- STATISTICS -->
+                <section class="glass-card stats-card">
 
-                    <p class="section-label">YOUR ACTIVITY</p>
+                    <p class="eyebrow">YOUR ACTIVITY</p>
 
-                    <h2>Keep Going!</h2>
+                    <h2>A little momentum.</h2>
 
-                    <div class="summary-stats">
 
-                        <div>
-                            <h3 id="pending-count">0</h3>
-                            <p>Pending</p>
+                    <div class="stats-grid">
+
+                        <div class="stat">
+
+                            <span class="stat-number" id="pending-count">
+                                0
+                            </span>
+
+                            <span class="stat-label">
+                                Pending
+                            </span>
+
                         </div>
 
-                        <div>
-                            <h3 id="completed-count">0</h3>
-                            <p>Completed</p>
+
+                        <div class="stat">
+
+                            <span class="stat-number" id="completed-count">
+                                0
+                            </span>
+
+                            <span class="stat-label">
+                                Completed
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number overdue-number" id="overdue-count">
+                                0
+                            </span>
+
+                            <span class="stat-label">
+                                Overdue
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="quote">
+
+                    <div class="daily-quote">
+
                         "Great things are done by a series of small things brought together."
+
                     </div>
 
-                </div>
+                </section>
 
             </aside>
 
@@ -180,14 +348,105 @@
 
 
         <!-- FOOTER -->
-        <footer>
-            Designed for productivity. Made with ❤️
+        <footer class="footer">
+
+            <span>Designed for focus. Built for progress.</span>
+
+            <span>YOUR DAY, YOUR PACE <b>✦</b></span>
+
         </footer>
 
     </main>
 
 
-    <script src="app.js"></script>
+    <!-- EDIT TASK MODAL -->
+    <dialog class="edit-dialog" id="edit-dialog">
+
+        <form method="dialog" id="edit-form">
+
+            <div class="dialog-heading">
+
+                <div>
+                    <p class="eyebrow">MAKE A CHANGE</p>
+                    <h2>Edit task</h2>
+                </div>
+
+                <button class="icon-button" value="cancel" aria-label="Close dialog">
+                    ×
+                </button>
+
+            </div>
+
+
+            <label class="field-label" for="edit-task-input">
+                Task name
+            </label>
+
+            <input
+                class="text-input"
+                id="edit-task-input"
+                maxlength="120"
+                required
+            >
+
+
+            <div class="form-row">
+
+                <div class="field-group">
+
+                    <label class="field-label" for="edit-due-date">
+                        Due date
+                    </label>
+
+                    <input
+                        class="text-input date-input"
+                        type="date"
+                        id="edit-due-date"
+                    >
+
+                </div>
+
+
+                <div class="field-group">
+
+                    <label class="field-label" for="edit-priority">
+                        Priority
+                    </label>
+
+                    <select class="text-input" id="edit-priority">
+
+                        <option value="low">Low</option>
+
+                        <option value="medium">Medium</option>
+
+                        <option value="high">High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="dialog-actions">
+
+                <button class="secondary-button" value="cancel" type="button" id="cancel-edit">
+                    Cancel
+                </button>
+
+                <button class="primary-button" id="save-edit" type="submit">
+                    Save changes <span>↗</span>
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- TOAST MESSAGE -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 </body>
 
