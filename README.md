@@ -174,3 +174,38 @@ BCA graduate, learning Java full stack, building in public.
 ## 13. License
 
 To be decided.
+┌──────────────────────────────────────────────┐
+│                                              │
+│  Good Morning 👋                       ♡     │
+│  Welcome back!                               │
+│                                              │
+│  YOUR PERSONAL SPACE                         │
+│  Your Tasks!                                 │
+│  Saturday, November 7                         │
+│                                              │
+│  [All] [To-do] [Completed]                   │
+│                                              │
+├────────────────────────┬─────────────────────┤
+│                        │                     │
+│  TODAY'S FOCUS         │  CREATE A TASK      │
+│                        │                     │
+│  Daily Progress  60%   │  Task Name          │
+│  ████████████          │                     │
+│                        │  Due Date           │
+│  🔍 Search tasks       │  Priority           │
+│                        │                     │
+│  □ Complete Java       │  [+ Add Task]       │
+│    Priority: High      │                     │
+│                        ├─────────────────────┤
+│  □ Learn React         │  PRODUCTIVITY       │
+│    Priority: Medium    │                     │
+│                        │  05 Pending          │
+│  ✓ HTML Practice       │  03 Completed       │
+│                        │  01 Overdue         │
+│                        │                     │
+│  [Clear Completed]     │                     │
+│                        │                     │
+├────────────────────────┴─────────────────────┤
+│                                              │
+│          Designed for productivity           │
+└──────────────────────────────────────────────┘
